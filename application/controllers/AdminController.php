@@ -580,10 +580,13 @@ class AdminController extends CI_Controller {
 
 	public function userScore() {
 		if(isset($_POST['searchBtn']) && !empty($_POST['searchBtn']) && $_POST['searchBtn'] == 'searchBtn'){
+			//echo "<pre>";print_r($_POST);
 			$post_cat = !empty($_POST['category_name'])?$_POST['category_name']:'';
 			$post_date_range = explode('-',$_POST['cat_date_range']);
 			
-			$query = $this->db->query("SELECT * FROM `user_score` WHERE  (report_submit BETWEEN '".trim($post_date_range[0])."' AND '".trim($post_date_range[1])."')");
+			$query = $this->db->query("SELECT * FROM `user_score` WHERE  (report_submit BETWEEN '".trim(strtotime($post_date_range[0]))."' AND '".strtotime(trim($post_date_range[1]))."')");
+			/*echo $this->db->last_query();
+			die();*/
 			$scores = $query->result();
 
 			
@@ -635,6 +638,30 @@ class AdminController extends CI_Controller {
 
 		$cats = $this->cm->getData(['*'],[],'','categories');
 		$this->load->view('admin/user-score', compact('scores','cats'));
+	}
+
+	public function scoreMail($id){
+		$userData = $this->cm->getRowData(['*'],['id'=>$id],'users');
+		$this->load->view('admin/score-mail',compact('userData'));
+	}
+	public function sendScoreMail($id){
+		$userData = $this->cm->getRowData(['*'],['id'=>$id],'users');
+		$this->load->library('email');
+		$message = "<h4>Your report analysis</h4>";
+		$message .= "<br/>";
+		$message .= $_POST['email_content'];
+		$message .= "<br/>";
+		$message .= "<h4>Thanks,<br>HBC</h4><br>";
+	    $message .= "<img style='height: 60px;' src = '".base_url('assets/img/logo-2.png')."' >";
+	    $this->email->from('websitebyranking@gmail.com', 'HBC');
+	    $this->email->to($userData->email);
+	    $this->email->cc('anupmishra509@gmail.com');
+	    $this->email->subject($_POST['email_subject']);
+	    $this->email->message($message);
+	    $this->email->set_mailtype("html");
+	    $this->email->send();
+		$this->session->set_flashdata('success', 'Mail Send Sussessfully !!');
+		return redirect('/admin/user-score');
 	}
 }
 /* End of file AdminController.php */

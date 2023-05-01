@@ -86,6 +86,8 @@ $route['admin/category/delete/(:num)'] = 'AdminController/deleteCategory/$1';
 $route['admin/edit-catgeroy'] = 'AdminController/editCategory';
 $route['admin/edit-catgeroy'] = 'AdminController/editCategory';
 $route['admin/user-score'] = 'AdminController/userScore';
+$route['admin/score/mail/(:num)'] = 'AdminController/scoreMail/$1';
+$route['admin/sned-score/mail/(:num)'] = 'AdminController/sendScoreMail/$1';
 
 
 $route['admin/questions'] = 'AdminController/questionList';

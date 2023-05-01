@@ -460,7 +460,7 @@ class CommonModel extends CI_Model {
 		$insScoreData = [
 			'userId' => $this->session->userdata('user')->id,
 			'cat_points' => json_encode($scoreData),
-			'report_submit' => date('m/d/Y')
+			'report_submit' => strtotime(date('m/d/Y'))
 		];
 		$this->insertData('user_score',$insScoreData);
 

@@ -25,8 +25,10 @@
                         <div class="card shadow mb-4">
                             <form action="" method="POST">
                         <div class="card-header py-3">
-                            
+                            <?php show_success_msg(); ?>
+                            <?php show_error_msg(); ?>
                             <div class="d-flex w-100">
+                                
                             <div class="d-flex align-items-center">
                             <!-- <div class="mr-3">
                                  <label>Select Progress</label>
@@ -37,6 +39,7 @@
                                     <option>Medium</option>
                                 </select>
                             </div> -->
+                            
                             <div class="">
                                  <label>Select Categories</label>
                                 <select class="form-control" id="category_name" name="category_name">
@@ -93,24 +96,29 @@
                                     </thead>
                                    
                                      <tbody>
+                                        
                                         <?php if(!empty($scores)){ 
+                                            $i=0;
                                             foreach($scores as $score){
-                                                $cat_scores = json_decode($score->cat_points)
+                                                $cat_scores = json_decode($score->cat_points);
+                                                
+                                                $userSql = $this->db->query("SELECT * FROM users WHERE id='".$score->userId."'");
+                                                $userData = $userSql->row();
                                         ?>
                                         <tr>
-                                                <td class="text-center">01</td>
-                                                <td>27 Oct 2022</td>
-                                                 <td>Website By Ranking</td>
-                                                <td>Anil Bhatt</td>
-                                                <td>anilbhatt094@gmail.com</td>
+                                                <td class="text-center"><?php echo ++$i; ?></td>
+                                                <td><?php echo date('m/d/Y',$score->report_submit); ?></td>
+                                                <td><?php echo $userData->company_name; ?></td>
+                                                <td><?php echo $userData->firstname; ?></td>
+                                                <td><?php echo $userData->email; ?></td>
                                                 <?php foreach($cat_scores as $key => $cat_score){ ?>
                                                 
                                                 <td class="text-success font-weight-bold"><?php echo $cat_score ?>%</td>
                                                 <?php } ?>
 
                                                 <td class="d-flex ">
-                                                    <button class="btn ml-auto bg-defult"> <i class="fa fa-download"></i> </button>
-                                <button class="btn ml-auto bg-defult"> <i class="fa fa-envelope"></i> </button>
+                                                    <!-- <button class="btn ml-auto bg-defult"> <i class="fa fa-download"></i> </button> -->
+                                                    <a href="<?php echo base_url('admin/score/mail/'.$userData->id); ?>" class="btn ml-auto bg-defult"> <i class="fa fa-envelope"></i> </a>
                                                 </td>
                                                
                                             </tr>
@@ -126,61 +134,7 @@
                 </div>
         <!-- Content -->
         <!-- Modal -->
-<div class="modal fade" id="mailpopup" tabindex="-1" role="dialog" aria-labelledby="mailpopupLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="mailpopupLabel">Send Mail</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <select class="form-control mb-3">
-            <option class="form-control">Select</option>
-            <option class="form-control">High</option>
-            <option class="form-control">Medium</option>
-            <option class="form-control">Law</option>
-        </select>
-        <select class="form-control mb-3">
-            <option>Select Categories</option>
-                                    <option>Marketing</option>
-                                    <option>Sales</option>
-                                    <option>Marketing</option>
-                                    <option>Customer Service</option>
-                                    <option>Pricing Strategy</option>
-                                    <option>Understanding Your Customers</option>
-                                    <option>Credit Control</option>
-                                    <option>Product / Service Offering</option>
-                                    <option>Purchase</option>
-                                    <option>Human Resources</option>
-                                    <option>Operations</option>
-                                    <option>Financial Performance</option>
-                                    <option>Financial Stability</option>
-                                    <option>Management Accounts</option>
-                                    <option>IT Systems</option>
-                                    <option>Management</option>
-                                    <option>MIS</option>
-                                    <option>Business Goals</option>
-                                    <option>Your Niche</option>
-                                    <option>Challenges</option>
-                                    <option>Growth Potential</option>
-                                    <option>Risk Management</option>
-                                    <option>Key Performance Indicators</option>
-                                    <option>Communication</option>
-                                    <option>Strategic Business Planning</option>
-                                    <option>Competition monitoring  </option>
-                                    <option>Owner’s Mindset </option>
-        </select>
-        <textarea class="form-control" placeholder="Enter Messages" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send</button>
-      </div>
-    </div>
-  </div>
-</div>
+
                
 </div>
 <script type="text/javascript">
