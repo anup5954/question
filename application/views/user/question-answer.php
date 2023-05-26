@@ -115,7 +115,12 @@
                 ?>
                   
                   <label class="checkbox-btn"><?php echo $option->options; ?>
-                    <input type="checkbox" name="option_id_<?php echo $ques->id; ?>[]" value="<?php echo $option->id; ?>" <?php echo $multichecked; ?> class="<?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option<?php } elseif($ques->id == 501) { ?>other-option<?php } ?> <?php if($ques->id == 503 && $option->options == 'None of the above'){ ?>none-option1<?php } elseif($ques->id == 503) { ?>other-option1<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option2<?php } elseif($ques->id == 489) { ?>other-option2<?php } ?> <?php if($ques->id == 491 && $option->options == 'None'){ ?>none-option3<?php } elseif($ques->id == 491) { ?>other-option3<?php } ?>">
+                    <input type="checkbox" name="option_id_<?php echo $ques->id; ?>[]" value="<?php echo $option->id; ?>" <?php echo $multichecked; ?> class="<?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option<?php } elseif($ques->id == 501) { ?>other-option<?php } ?> <?php if($ques->id == 503 && $option->options == 'None of the above'){ ?>none-option1<?php } elseif($ques->id == 503) { ?>other-option1<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option2<?php } elseif($ques->id == 489) { ?>other-option2<?php } ?> <?php if($ques->id == 491 && $option->options == 'None'){ ?>none-option3<?php } elseif($ques->id == 491) { ?>other-option3<?php } ?> <?php if($ques->id == 555 && $option->options == 'None of the Above'){ ?>none-option4<?php } elseif($ques->id == 555) { ?>other-option4<?php } ?> <?php if($ques->id == 379 && $option->options == 'None'){ ?>none-option5<?php } elseif($ques->id == 379) { ?>other-option5<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option6<?php } elseif($ques->id == 489) { ?>other-option6<?php } ?> <?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option7<?php } elseif($ques->id == 501) { ?>other-option7<?php } ?> <?php if($ques->id == 487 && $option->options == 'None'){ ?>none-option8<?php } elseif($ques->id == 487) { ?>other-option8<?php } ?> <?php if($ques->id == 493 && $option->options == 'No Body'){ ?>none-option9<?php } elseif($ques->id == 493) { ?>other-option9<?php } ?> 
+
+                      <?php if($ques->id == 496 && $option->options == 'None'){ ?>none-option10<?php } elseif($ques->id == 496) { ?>other-option10<?php } ?>
+
+                      <?php if($ques->id == 543 && $option->options == 'None'){ ?>none-option11<?php } elseif($ques->id == 543) { ?>other-option11<?php } ?>
+                    ">
                     <span class="checkmark"></span>
                   </label>
                   
@@ -333,6 +338,94 @@ $('#prev').click(function() {
     $('.none-option3').prop('checked',false);
   });
 
+
+  $(document).on('click','.none-option4', function() {
+    $('.other-option4').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option4', function() {
+    $('.none-option4').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option5', function() {
+    $('.other-option5').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option5', function() {
+    $('.none-option5').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option6', function() {
+    $('.other-option6').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option6', function() {
+    $('.none-option6').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option7', function() {
+    $('.other-option7').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option7', function() {
+    $('.none-option7').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option8', function() {
+    $('.other-option8').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option8', function() {
+    $('.none-option8').prop('checked',false);
+  });
+
+
+$(document).on('click','.none-option8', function() {
+    $('.other-option9').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option9', function() {
+    $('.none-option9').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option8', function() {
+    $('.other-option10').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option10', function() {
+    $('.none-option10').prop('checked',false);
+  });
+
+
+  $(document).on('click','.none-option8', function() {
+    $('.other-option11').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option11', function() {
+    $('.none-option11').prop('checked',false);
+  });
+  
 });
 
 
