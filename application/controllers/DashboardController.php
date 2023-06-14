@@ -175,7 +175,7 @@ class DashboardController extends CI_Controller {
 					$pdfCond = ['id' => $this->session->userdata('user')->id];
 					$this->cm->updateData($pdfCond,'users',$pdfData);
 
-					$this->email->send();
+					//$this->email->send();
 
 					$response = ['msg' => "You have successfully completed",
 					'filename' => $pdfName
@@ -324,4 +324,3 @@ class DashboardController extends CI_Controller {
 
 /* End of file DashboardController.php */
 /* Location: ./application/controllers/DashboardController.php */
-?>

@@ -1075,7 +1075,9 @@ $output .= '<p style="page-break-after:always"></p>';
             								foreach($ques->options as $option){
 	            								if(in_array($option->id, $options)){
 	            									$option_row = $this->getRowData(['*'],['id' => $option->id],'options');
-		            								$output .= ' <label style="display:block">'.$option_row->options.'</label>';
+		            								$output .= ' <label style="display:block">'.$option_row->options.'</label><br/>';
+
+		            								$output .= ' <label style="display:block">'.$option_row->option_answer.'</label>';
 	            								}
 	            							}
 
@@ -1094,7 +1096,9 @@ $output .= '<p style="page-break-after:always"></p>';
 	            							foreach($ques->options as $option){
 	            								if(!in_array($option->id, $options)){
 	            									$option_row = $this->getRowData(['*'],['id' => $option->id],'options');
-		            								$output .= ' <label style="display:block">'.$option_row->options.'</label>';
+		            								$output .= ' <label style="display:block">'.$option_row->options.'</label><br/>';
+		            								
+		            								$output .= ' <label style="display:block">'.$option_row->option_answer.'</label>';
 	            								}
 	            							}
 
