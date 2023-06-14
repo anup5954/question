@@ -130,10 +130,11 @@
                                    
                                      <tbody>
                                         <?php if(!empty($categories)) { 
+                                            $i=1;
                                             foreach($categories as $category) {
                                         ?>
                                         <tr>
-                                            <td>1</td>
+                                            <td><?php echo $i++; ?></td>
                                             <td>
                                                 <?php if(!empty($category->cat_image)){ ?>
                                                 <img src="<?php echo base_url(); ?>uploads/<?php echo $category->cat_image; ?>" style="height:50px;" >
