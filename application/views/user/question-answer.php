@@ -115,12 +115,13 @@
                 ?>
                   
                   <label class="checkbox-btn"><?php echo $option->options; ?>
-                    <input type="checkbox" name="option_id_<?php echo $ques->id; ?>[]" value="<?php echo $option->id; ?>" <?php echo $multichecked; ?> class="<?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option<?php } elseif($ques->id == 501) { ?>other-option<?php } ?> <?php if($ques->id == 503 && $option->options == 'None of the above'){ ?>none-option1<?php } elseif($ques->id == 503) { ?>other-option1<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option2<?php } elseif($ques->id == 489) { ?>other-option2<?php } ?> <?php if($ques->id == 491 && $option->options == 'None'){ ?>none-option3<?php } elseif($ques->id == 491) { ?>other-option3<?php } ?> <?php if($ques->id == 555 && $option->options == 'None of the Above'){ ?>none-option4<?php } elseif($ques->id == 555) { ?>other-option4<?php } ?> <?php if($ques->id == 379 && $option->options == 'None'){ ?>none-option5<?php } elseif($ques->id == 379) { ?>other-option5<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option6<?php } elseif($ques->id == 489) { ?>other-option6<?php } ?> <?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option7<?php } elseif($ques->id == 501) { ?>other-option7<?php } ?> <?php if($ques->id == 487 && $option->options == 'None'){ ?>none-option8<?php } elseif($ques->id == 487) { ?>other-option8<?php } ?> <?php if($ques->id == 493 && $option->options == 'No Body'){ ?>none-option9<?php } elseif($ques->id == 493) { ?>other-option9<?php } ?> 
+                    <input type="checkbox" name="option_id_<?php echo $ques->id; ?>[]" value="<?php echo $option->id; ?>" <?php echo $multichecked; ?> class="<?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option<?php } elseif($ques->id == 501) { ?>other-option<?php } ?> <?php if($ques->id == 503 && $option->options == 'None of the above'){ ?>none-option1<?php } elseif($ques->id == 503) { ?>other-option1<?php } ?> <?php if($ques->id == 489 && $option->options == 'Do not know'){ ?>none-option2<?php } elseif($ques->id == 489) { ?>other-option2<?php } ?> <?php if($ques->id == 491 && $option->options == 'None'){ ?>none-option3<?php } elseif($ques->id == 491) { ?>other-option3<?php } ?> <?php if($ques->id == 555 && $option->options == 'None of the Above'){ ?>none-option4<?php } elseif($ques->id == 555) { ?>other-option4<?php } ?> <?php if($ques->id == 379 && $option->options == 'None'){ ?>none-option5<?php } elseif($ques->id == 379) { ?>other-option5<?php } ?> <?php if($ques->id == 501 && $option->options == 'None'){ ?>none-option7<?php } elseif($ques->id == 501) { ?>other-option7<?php } ?> <?php if($ques->id == 487 && $option->options == 'None'){ ?>none-option8<?php } elseif($ques->id == 487) { ?>other-option8<?php } ?> <?php if($ques->id == 493 && $option->options == 'No Body'){ ?>none-option9<?php } elseif($ques->id == 493) { ?>other-option9<?php } ?> 
 
                       <?php if($ques->id == 496 && $option->options == 'None'){ ?>none-option10<?php } elseif($ques->id == 496) { ?>other-option10<?php } ?>
 
-                      <?php if($ques->id == 543 && $option->options == 'None'){ ?>none-option11<?php } elseif($ques->id == 543) { ?>other-option11<?php } ?>
-                    ">
+                      <?php if($ques->id == 545 && $option->options == 'None of the above'){ ?>none-option12<?php } elseif($ques->id == 545) { ?>other-option12<?php } ?>
+
+                      <?php if($ques->id == 543 && $option->options == 'None'){ ?>none-option11<?php } elseif($ques->id == 543) { ?>other-option11<?php } ?>">
                     <span class="checkmark"></span>
                   </label>
                   
@@ -308,6 +309,17 @@ $('#prev').click(function() {
   });
 
 
+  $(document).on('click','.none-option12', function() {
+    $('.other-option12').each(function(){
+      $(this).prop('checked',false);
+    });
+  });
+
+  $(document).on('click', '.other-option12', function() {
+    $('.none-option12').prop('checked',false);
+  });
+
+
   $(document).on('click','.none-option1', function() {
     $('.other-option1').each(function(){
       $(this).prop('checked',false);
@@ -383,6 +395,8 @@ $('#prev').click(function() {
   });
 
 
+
+
   $(document).on('click','.none-option8', function() {
     $('.other-option8').each(function(){
       $(this).prop('checked',false);
@@ -394,7 +408,7 @@ $('#prev').click(function() {
   });
 
 
-$(document).on('click','.none-option8', function() {
+$(document).on('click','.none-option9', function() {
     $('.other-option9').each(function(){
       $(this).prop('checked',false);
     });
@@ -405,7 +419,7 @@ $(document).on('click','.none-option8', function() {
   });
 
 
-  $(document).on('click','.none-option8', function() {
+  $(document).on('click','.none-option10', function() {
     $('.other-option10').each(function(){
       $(this).prop('checked',false);
     });
@@ -416,7 +430,7 @@ $(document).on('click','.none-option8', function() {
   });
 
 
-  $(document).on('click','.none-option8', function() {
+  $(document).on('click','.none-option11', function() {
     $('.other-option11').each(function(){
       $(this).prop('checked',false);
     });

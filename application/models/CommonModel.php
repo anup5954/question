@@ -1066,7 +1066,9 @@ $output .= '<p style="page-break-after:always"></p>';
             								
             							}
 
-            						} elseif($ques->id == 331 || $ques->id == 543 || $ques->id == 545){
+            						} elseif($ques->id == 331 || $ques->id == 543){
+
+            							
 
             								if(strcasecmp(trim(strip_tags($ques->tick_header)),'Nil')){
             									$output .= '<label style="display:block">'.$ques->tick_header.'</label>';
@@ -1077,7 +1079,7 @@ $output .= '<p style="page-break-after:always"></p>';
 	            									$option_row = $this->getRowData(['*'],['id' => $option->id],'options');
 		            								$output .= ' <label style="display:block">'.$option_row->options.'</label><br/>';
 
-		            								$output .= ' <label style="display:block">'.$option_row->option_answer.'</label>';
+		            								//$output .= ' <label style="display:block">'.$option_row->option_answer.'</label>';
 	            								}
 	            							}
 
@@ -1106,7 +1108,7 @@ $output .= '<p style="page-break-after:always"></p>';
             									$output .= '<label style="display:block">'.$ques->untick_footer.'</label>';
             								}
 	            							
-	            					
+	            						
 
             						} else {
             							if(count($options)  == count($ques->options)){
@@ -1122,6 +1124,32 @@ $output .= '<p style="page-break-after:always"></p>';
 
 	            							
 	            						} else {
+	            							
+	            							if(($ques->id == 493 && !in_array(1629, $options)) || ($ques->id == 491 && !in_array(1446, $options)) || ($ques->id == 545 && !in_array(1728, $options))){
+
+	            								if(count($options)+1  == count($ques->options)){
+
+		            								if(strcasecmp(trim(strip_tags($ques->tick_header)),'Nil')){
+		            									$output .= '<label style="display:block">'.$ques->tick_header.'</label>';
+		            								}
+
+		            								foreach($ques->options as $option){
+			            								if(in_array($option->id, $options)){
+			            									$option_row = $this->getRowData(['*'],['id' => $option->id],'options');
+				            								$output .= ' <label style="display:block">'.$option_row->options.'</label><br/>';
+
+				            								$output .= ' <label style="display:block">'.$option_row->option_answer.'</label>';
+			            								}
+			            							}
+
+
+			            							if(strcasecmp(trim(strip_tags($ques->tick_footer)),'Nil')){
+		            									$output .= '<label style="display:block">'.$ques->tick_footer.'</label>';
+		            								}
+
+			            							
+			            						}
+	            							} else {
 
 	            							if(strcasecmp(trim(strip_tags($ques->untick_header)),'Nil')){
             									$output .= '<label style="display:block">'.$ques->untick_header.'</label>';
@@ -1144,8 +1172,10 @@ $output .= '<p style="page-break-after:always"></p>';
             								}
 	            							
 	            						}
+	            					}
             						}
             					} else {
+
             						foreach($options as $option){
             							$option_row = $this->getRowData(['*'],['id' => $option],'options');
 
